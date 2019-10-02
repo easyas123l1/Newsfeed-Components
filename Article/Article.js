@@ -85,8 +85,55 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'LETS GO BLUES',
+    date: 'JUNE 12TH 2019',
+    firstParagraph: 'Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!Stanley Cup Champions!!!',
+    secondParagraph: 'WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!WE ARE THE CHAMPIONS!!!!!',
+    thirdParagraph: 'NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!NO TIME FOR LOSING!!'
   }
 ];
+
+function createArticle(title, date, first, second, third) {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const dates = document.createElement('p')
+  const articleContent = document.createElement('p');
+  const articleContent2 = document.createElement('p');
+  const articleContent3 = document.createElement('p');
+  const articleSpan = document.createElement('span');
+
+  article.appendChild(articleTitle);
+  article.appendChild(dates);
+  article.appendChild(articleContent);
+  article.appendChild(articleContent2);
+  article.appendChild(articleContent3);
+  article.appendChild(articleSpan);
+
+  article.classList.add('article');
+  dates.classList.add('date');
+  articleSpan.classList.add('expandButton');
+
+  articleTitle.textContent = title;
+  dates.textContent = date;
+  articleContent.textContent = first;
+  articleContent2.textContent = second;
+  articleContent3.textContent = third;
+  articleSpan.textContent = 'Click Me!';
+
+  articleSpan.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+
+  return article
+}
+
+const articles = document.querySelector('.articles');
+console.log(articles);
+data.forEach(e => {
+  articles.appendChild(createArticle(e.title, e.date, e.firstParagraph, e.secondParagraph, e.thirdParagraph))
+})
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
